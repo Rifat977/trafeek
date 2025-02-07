@@ -111,11 +111,11 @@ DATABASES = {
 
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Cparobust",
+    "site_title": "Trafeek",
 
-    "site_header": "Cparobust",
+    "site_header": "Trafeek",
 
-    "site_brand": "Cparobust",
+    "site_brand": "Trafeek",
 
     # "site_logo": "books/img/logo.png",
 
@@ -127,9 +127,9 @@ JAZZMIN_SETTINGS = {
 
     # "site_icon": None,
 
-    "welcome_sign": "Welcome to the cparobust",
+    "welcome_sign": "Welcome to the Trafeek",
 
-    "copyright": "Cparobust",
+    "copyright": "Trafeek",
 
     "hide_recent_acitons" : True,
 
