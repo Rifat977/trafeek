@@ -1,0 +1,106 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+<div class="content-wrapper py-5">
+  <div class="container">
+    <!-- Header Section -->
+    <section class="text-center mb-5">
+      <h2 class="display-4 fw-bold">Privacy Policy</h2>
+      <p class="text-muted fs-5">Learn how we handle your information and ensure your privacy.</p>
+    </section>
+
+    <!-- Privacy Policy Details -->
+    <section class="privacy-policy mb-5">
+      <div class="row g-4">
+        <!-- Information We Collect -->
+        <div class="col-12 mt-2 col-md-6">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h4 class="card-title">Information We Collect</h4>
+              <p class="card-text">We collect information such as your email, browsing behavior, IP address, and device data to improve our services and ensure effective ad targeting.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- How We Use Information -->
+        <div class="col-12 mt-2 col-md-6">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h4 class="card-title">How We Use Information</h4>
+              <p class="card-text">The data we collect helps us deliver personalized ads, improve user experience, and comply with legal obligations. We do not sell your personal information to third parties.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cookies and Tracking Technologies -->
+        <div class="col-12 mt-2 col-md-6">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h4 class="card-title">Cookies and Tracking Technologies</h4>
+              <p class="card-text">We use cookies and similar technologies to track user activity and improve the performance of our platform. You can manage cookie preferences through your browser settings.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third-Party Services -->
+        <div class="col-12 mt-2 col-md-6">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h4 class="card-title">Third-Party Services</h4>
+              <p class="card-text">Our platform integrates with third-party ad providers and analytics services. These third parties may collect and process your data in accordance with their privacy policies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Your Rights -->
+        <div class="col-12 mt-2">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h4 class="card-title">Your Rights</h4>
+              <p class="card-text">You have the right to access, correct, or delete your personal data. If you have questions about your data or wish to exercise your rights, please contact us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact and Links Section -->
+    <section class="contact-details" id="contact-details-section">
+      <div class="row text-center text-md-left">
+        <div class="col-12 col-md-4 mt-3">
+          <h5 class="pb-2">Quick Navigation</h5>
+          <a href="{% url 'core:index' %}"><p class="m-0 pb-2">Home</p></a>   
+          <a href="{% url 'core:contact' %}"><p class="m-0 pb-2">Contact</p></a>   
+          <a href="{% url 'account:login' %}" ><p class="m-0 pt-1 pb-2">Login</p></a> 
+          <a href="{% url 'account:register' %}" ><p class="m-0 pt-1 pb-2">Register</p></a> 
+        </div>
+        <div class="col-12 col-md-4">
+          <img src="{% static 'logo_21.png' %}" alt="" class="">
+          <div class="">
+            <p class="text-muted m-0">Cparobust has been connecting brands and marketing professionals through top-tier advertising and monetization solutions since 2013. Along with performance-boosting functionality.</p>
+          </div>         
+        </div>
+        <div class="col-12 col-md-4 mt-3">
+            <h5 class="pb-2">Our address</h5>
+            <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <a href="mailto:{{setting.contact_page_email}}"><span class="mdi mdi-email"></span></a>
+              <a href="skype:{{setting.contact_page_skype}}?chat"><span class="mdi mdi-skype"></span></a>
+            </div>
+        </div>
+      </div> 
+    </section>
+    <section>
+      <div>
+        <hr class="hr" />
+        <div class="row text-center justify-content-center">
+          <p class="text-muted">Copyright &copy; 2025 Cparobust</p>
+        </div>   
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

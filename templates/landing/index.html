@@ -1,0 +1,249 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block title %}Advanced Advertising Network{% endblock %}
+
+{% block content %}
+<div class="banner" >
+  <div class="container">
+    <h1 class="font-weight-semibold">Advanced Advertising Network</h1>
+    <h6 class="font-weight-normal text-muted pb-3">with a Unique Partner Care Approach</h6>
+    <div>
+      <a class="btn btn-opacity-light mr-1" href="{% url 'account:login' %}">Get started</a>
+      <a class="btn btn-opacity-success ml-1" href="{% url 'account:register' %}">Learn more</a>
+    </div>
+    <img src="{% static 'assets2/images/Group171.svg' %}" alt="" class="img-fluid">
+  </div>
+</div>
+<div class="content-wrapper">
+  <div class="container">
+    <section class="features-overview" id="features-section" >
+      <div class="content-header">
+        <h2>Why choose the leading online ad network</h2>
+      </div>
+      <div class="d-md-flex justify-content-between">
+        <div class="grid-margin d-flex justify-content-start">
+          <div class="features-width">
+            <img src="{% static 'assets2/images/Group12.svg' %}" alt="" class="img-icons">
+            <h5 class="py-3">Unique Partner Care</h5>
+            <p class="text-muted">Our Partner Care Standards go beyond just answering questions. In addition to high-competent support, we offer guidance on optimizing campaigns and monetizing traffic. Expert managers assist in improving ad strategy for your benefit.</p>
+          </div>
+        </div>
+        <div class="grid-margin d-flex justify-content-center">
+          <div class="features-width">
+            <img src="{% static 'assets2/images/Group7.svg' %}" alt="" class="img-icons">
+            <h5 class="py-3">Ad Safety and Traffic Quality</h5>
+            <p class="text-muted">Adsterra’s in-house 3-level security system prevents malware, ad fraud, and bot traffic, ensuring high-quality views and clicks. The platform’s intelligent algorithms serve offers to the most relevant audiences based on over 20 parameters.</p>
+          </div>
+        </div>
+        <div class="grid-margin d-flex justify-content-end">
+          <div class="features-width">
+            <img src="{% static 'assets2/images/Group5.svg' %}" alt="" class="img-icons">
+            <h5 class="py-3">Performance-Boosting Tools</h5>
+            <p class="text-muted">Advertisers automate bidding strategies with Traffic Estimator and Smart CPM or set rules to optimize traffic by conversions (CPA Goal). Custom Bid allows for the finest bid adjustments, sending higher payouts to the best-performing placements.</p>
+          </div>
+        </div>
+      </div>
+    </section>     
+    <section class="digital-marketing-service" id="digital-marketing-section">
+      <div class="content-header text-center mb-5">
+        <h2>Who can benefit from Adsterra ad network</h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
+          <h3 class="m-0">Advertisers</h3>
+          <div class="col-lg-7 col-xl-6 p-0">
+            <p class="py-4 m-0 text-muted">Adsterra is a powerful online advertising network for brands, agencies, and media buyers. With over 20 targeting settings, you deliver ads to the best-matching audiences. Unlock high-quality CPM, CPC, and CPA traffic from 35K+ direct publishers.            </p>
+          </div>    
+        </div>
+        <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
+          <img src="{% static 'assets2/images/Group1.png' %}" alt="" class="img-fluid">
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-7 text-center flex-item grid-margin" data-aos="fade-right">
+          <img src="{% static 'assets2/images/Group2.png' %}" alt="" class="img-fluid">
+        </div>
+        <div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-left">
+          <h3 class="m-0">Publishers</h3>
+          <div class="col-lg-9 col-xl-8 p-0">
+            <p class="py-4 m-0 text-muted">With the highest-paying ad network, publishers can monetize sites, blogs or social media traffic. We provide solutions for earning without a website. AI algorithms are finetuned to send the most relevant CPM rates and ad feed.</p>
+          </div>
+        </div>
+      </div>
+    </section>     
+    <section class="customer-feedback" id="feedback-section">
+      <div class="row">
+        <div class="col-12 text-center pb-5">
+          <h2>What our customers have to say</h2>
+          <h6 class="section-subtitle text-muted m-0">Lorem ipsum dolor sit amet, tincidunt vestibulum.</h6>
+        </div>
+        <div class="owl-carousel owl-theme grid-margin">
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face2.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Tony Martinez</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face3.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Sophia Armstrong</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face20.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Cody Lambert</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face15.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Cody Lambert</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face16.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Cody Lambert</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face1.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Tony Martinez</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face2.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Tony Martinez</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face3.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Sophia Armstrong</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+            <div class="card customer-cards">
+              <div class="card-body">
+                <div class="text-center">
+                  <img src="{% static 'assets2/images/face20.jpg' %}" width="89" height="89" alt="" class="img-customer">
+                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                  <div class="content-divider m-auto"></div>
+                  <h6 class="card-title pt-3">Cody Lambert</h6>
+                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact-details" id="contact-details-section">
+      <div class="row text-center text-md-left">
+        <div class="col-12 col-md-4 mt-3">
+          <h5 class="pb-2">Quick Navigation</h5>
+          <a href="{% url 'core:index' %}"><p class="m-0 pb-2">Home</p></a>   
+          <a href="{% url 'core:contact' %}"><p class="m-0 pb-2">Contact</p></a>   
+          <a href="{% url 'account:login' %}" ><p class="m-0 pt-1 pb-2">Login</p></a> 
+          <a href="{% url 'account:register' %}" ><p class="m-0 pt-1 pb-2">Register</p></a> 
+        </div>
+        <div class="col-12 col-md-4">
+          <img src="{% static 'logo_21.png' %}" alt="" class="">
+          <div class="">
+            <p class="text-muted m-0">Cparobust has been connecting brands and marketing professionals through top-tier advertising and monetization solutions since 2013. Along with performance-boosting functionality.</p>
+          </div>         
+        </div>
+        <div class="col-12 col-md-4 mt-3">
+            <h5 class="pb-2">Our address</h5>
+            <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <a href="mailto:{{setting.contact_page_email}}"><span class="mdi mdi-email"></span></a>
+              <a href="skype:{{setting.contact_page_skype}}?chat"><span class="mdi mdi-skype"></span></a>
+            </div>
+        </div>
+      </div> 
+    </section>
+    <section>
+      <div>
+        <hr class="hr" />
+        <div class="row text-center justify-content-center">
+          <p class="text-muted">Copyright &copy; 2025 Cparobust</p>
+        </div>   
+      </div>
+    </section>
+    <!-- Modal for Contact - us Button -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Contact Us</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" id="Name" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="Email-1" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="Message">Message</label>
+                <textarea class="form-control" id="Message" placeholder="Enter your Message"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+{% endblock %}

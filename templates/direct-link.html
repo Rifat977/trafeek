@@ -1,0 +1,188 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %}Direct Links{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="card mb-5">
+      <h5 class="card-header">Direct Links</h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>SubID</th>
+              <th>...</th>
+            </tr>
+          </thead>
+          <tbody class="table-border-bottom-0">
+            
+            {% for link in placement_links %}
+            <tr>
+              <td>
+                {{link.created_at}}
+              </td>
+              <td>{{ link.placement.id }}</td>
+              <td>{{ link.placement.title }}</td>
+              <td>{{ link.subid.name }}</td>
+              <td>
+                <a href="{% url 'core:statistics' %}" class="btn btn-sm btn-secondary">View Statistics</a>
+                <button class="btn btn-sm btn-primary copy-link-btn" data-link="{{ link.link }}">Copy Link</button>
+              </td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {% for placement in placements %}
+    <div class="card mb-3">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ placement.title }}</h5>
+                    <p class="card-text">
+                        {{ placement.description }}
+                        <br>
+                        <div class="form-group">
+                          <select name="" class="form-select subid mt-2" id="{{ placement.id }}">
+                            {% for subid in subids %}
+                            <option value="{{ subid.id }}">
+                                {{ subid.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                        <button class="btn btn-sm btn-primary generate-link-btn mt-2" data-placement-id="{{ placement.id }}">
+                            Generate Link
+                        </button>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">Created: {{ placement.created_at|date:"M d, Y" }}</small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                {% if placement.image %}
+                <img class="card-img img-fluid rounded" src="{{ placement.image.url }}" alt="Placement image" 
+                     style="max-height: 150px; max-width: 100%; object-fit: contain;" />
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  {% endfor %}
+  
+
+
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              const buttons = document.querySelectorAll(".generate-link-btn");
+              
+              buttons.forEach(button => {
+                  button.addEventListener("click", function () {
+                      const placementId = this.getAttribute("data-placement-id");
+                      const subid = document.getElementById(placementId)
+                      if(subid.value==""){
+                        alert("Please choose the subid")
+                        return
+                      }
+                      const button = this;
+        
+                      fetch("{% url 'core:generate_link' %}", {
+                          method: "POST",
+                          headers: {
+                              "X-CSRFToken": "{{ csrf_token }}",
+                              "Content-Type": "application/x-www-form-urlencoded"
+                          },
+                          body: new URLSearchParams({ placement_id: placementId, subid: subid.value })
+                      })
+                      .then(response => response.json())
+                      .then(data => {
+                          if (data.link && data.created == true) {
+                              window.location.reload();
+                              const parent = button.parentElement;
+                              button.remove();
+                              subid.remove();
+        
+                              const linkSection = document.createElement("div");
+                              linkSection.innerHTML = `
+                                  <button class="btn btn-sm btn-danger mt-2" disabled>Generated</button>
+                                  <button class="btn btn-sm btn-primary copy-link-btn mt-2" data-link="${data.link}">Copy Link</button>
+                              `;
+                              parent.appendChild(linkSection);
+        
+                              const copyButton = parent.querySelector(".copy-link-btn");
+                              copyButton.addEventListener("click", function () {
+                                  navigator.clipboard.writeText(data.link).then(() => {
+                                      copyButton.textContent = "Copied!";
+                                      copyButton.classList.remove("btn-primary");
+                                      copyButton.classList.add("btn-info");
+        
+                                      setTimeout(() => {
+                                          copyButton.textContent = "Copy Link";
+                                          copyButton.classList.remove("btn-info");
+                                          copyButton.classList.add("btn-primary");
+                                      }, 2000);
+                                  }).catch(err => console.error("Failed to copy:", err));
+                              });
+                          } else if (data.created == ""){
+                            alert("Your can't generate now money earning smart link because your account is inactive. Please contact our admin to active your publisher account.")
+                          } else if (data.error) {
+                              alert("Error:", error);
+                          } else if (data.created == false){
+                            alert("This smart link is already generated")
+                          }
+                      })
+                      .catch(error => {
+                          alert("Error:", error);
+                      });
+                  });
+              });
+          });
+    
+          document.addEventListener("DOMContentLoaded", function () {
+            const copyButtons = document.querySelectorAll(".copy-link-btn");
+        
+            copyButtons.forEach(button => {
+              button.addEventListener("click", function () {
+                const link = this.getAttribute("data-link");
+        
+                navigator.clipboard.writeText(link).then(() => {
+                  this.textContent = "Copied!";
+                  this.classList.remove("btn-primary");
+                  this.classList.add("btn-info");
+        
+                  setTimeout(() => {
+                    this.textContent = "Copy Link";
+                    this.classList.remove("btn-info");
+                    this.classList.add("btn-primary");
+                  }, 2000);
+                }).catch(err => {
+                  console.error("Failed to copy text: ", err);
+                });
+              });
+            });
+          });
+        </script>
+
+    
+    
+    
+  </div>
+  <!-- / Content -->
+
+
+</div>
+{% endblock %}

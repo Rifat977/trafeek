@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <title>{% block title %} {% endblock %} | Cparobust</title>
+
+  <meta name="description" content="" />
+
+
+  <meta name="google-site-verification" content="4FCTe2tWZMeoOUFF-qh9kMJydGcPx6SMCgSBHtfwNA4" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="{% static '/assets/vendor/fonts/boxicons.css' %}" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="{% static '/assets/vendor/css/core.css' %}" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="{% static '/assets/vendor/css/theme-default.css' %}"
+    class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="{% static '/assets/css/demo.css' %}" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="{% static '/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+
+  <link rel="stylesheet" href="{% static '/assets/vendor/libs/apex-charts/apex-charts.css' %}" />
+
+  {% block style %} {% endblock %}
+
+  <!-- Page CSS -->
+
+
+  <!-- Helpers -->
+  <script src="{% static '/assets/vendor/js/helpers.js' %}"></script>
+
+  <script src="{% static '/assets/js/config.js' %}"></script>
+  <script type='text/javascript' src='//pl25638230.profitablecpmrate.com/03/95/8b/03958b0a54a0a75a82bee5055163e353.js'></script>
+</head>
+
+<body>
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
+
+      {% include 'partials/sidebar.html' %}
+      <!-- / Menu -->
+
+      <!-- Layout container -->
+      <div class="layout-page">
+
+        {% if request.user.is_approved != 'Active' %}
+          <div class="container mt-2">
+            <div class="alert alert-danger" role="alert">
+              Your account is currently inactive. Please contact our support system.
+              <div class="dropdown d-inline position-relative">
+                <button
+                  class="btn btn-sm btn-danger dropdown-toggle"
+                  type="button"
+                  id="contactDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Contact Us
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="contactDropdown" style="z-index: 1200;">
+                  <li>
+                    <a class="dropdown-item" href="skype:{{setting.skype}}?chat" target="_blank">Skype</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="mailto:{{setting.email}}" target="_blank">Email</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+
+        <!-- Navbar -->
+
+        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <i class="bx bx-menu bx-sm"></i>
+            </a>
+          </div>
+
+          <div class="notice-container px-4 py-2 text-white rounded shadow-sm d-none d-md-flex align-items-center col-md-10 col-xl-8" style="background-color: #dd494b;">
+            <b class="me-3">Notice:</b>
+            <marquee behavior="scroll" direction="left" class="notice-text">
+              {{setting.notice}}
+            </marquee>
+          </div>
+          
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <li class="nav-item lh-1 me-3">
+                Balance: ${{user_balance|floatformat:4}}
+              </li>
+              <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <div class="avatar avatar-online">
+                    {% if request.user.avatar %}
+                    <img src="{{request.user.avatar.url}}" alt class="w-px-40 h-auto rounded-circle" />
+                    {% else %}
+                    <img src="{% static 'assets/img/avatars/avatar1.jpeg' %}" alt class="w-px-40 h-auto rounded-circle" />
+                    {% endif %}
+                  </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'account:profile' %}">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="avatar avatar-online">
+                            {% if request.user.avatar %}
+                            <img src="{{request.user.avatar.url}}" alt class="w-px-40 h-auto rounded-circle" />
+                            {% else %}
+                            <img src="{% static 'assets/img/avatars/avatar1.jpeg' %}" alt
+                              class="w-px-40 h-auto rounded-circle" />
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <span class="fw-semibold d-block">{{request.user.first_name}}
+                            {{request.user.last_name}}</span>
+                          <small class="text-muted">{{request.user.username}}</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="dropdown-divider"></div>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'account:logout' %}">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Log Out</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="avatar avatar-online">
+                            {% if request.user.avatar %}
+                            <img src="{{request.user.avatar.url}}" alt class="w-px-40 h-auto rounded-circle" />
+                            {% else %}
+                            <img src="{% static 'assets/img/avatars/1.png' %}" alt
+                              class="w-px-40 h-auto rounded-circle" />
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <span class="fw-semibold d-block">{{request.user.first_name}}
+                            {{request.user.last_name}}</span>
+                          <small class="text-muted">{{request.user.username}}</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="dropdown-divider"></div>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'account:logout' %}">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Log Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="menu-icon text-dark tf-icons bx bx-bell" style="font-size: 28px;"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  {% if bel_notices %}
+                    {% for notice in bel_notices %}
+                      <li>
+                        <a class="dropdown-item" href="{% url 'core:notice_detail' notice.id %}">
+                          <span class="align-middle">{{ notice.title }}</span>
+                        </a>
+                      </li>
+                      {% if not forloop.last %}
+                        <li>
+                          <div class="dropdown-divider"></div>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  {% else %}
+                    <li>No notices available.</li>
+                  {% endif %}
+                </ul>
+                              
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="avatar avatar-online">
+                            {% if request.user.avatar %}
+                            <img src="{{request.user.avatar.url}}" alt class="w-px-40 h-auto rounded-circle" />
+                            {% else %}
+                            <img src="{% static 'assets/img/avatars/1.png' %}" alt
+                              class="w-px-40 h-auto rounded-circle" />
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <span class="fw-semibold d-block">{{request.user.first_name}}
+                            {{request.user.last_name}}</span>
+                          <small class="text-muted">{{request.user.username}}</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="dropdown-divider"></div>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'account:logout' %}">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Log Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- / Navbar -->
+
+        {% block content %} {% endblock %}
+
+        <!-- Content wrapper -->
+
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+
+
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="{% static 'assets/vendor/libs/jquery/jquery.js' %}"></script>
+  <script src="{% static 'assets/vendor/libs/popper/popper.js' %}"></script>
+  <script src="{% static 'assets/vendor/js/bootstrap.js' %}"></script>
+  <script src="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+
+  <script src="{% static 'assets/vendor/js/menu.js' %}"></script>
+  <!-- endbuild -->
+
+  <!-- Vendors JS -->
+  <script src="{% static 'assets/vendor/libs/apex-charts/apexcharts.js' %}"></script>
+
+  <!-- Main JS -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- Page JS -->
+  <script src="{% static 'assets/js/dashboards-analytics.js' %}"></script>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+
+</html>

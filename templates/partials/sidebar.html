@@ -1,0 +1,87 @@
+{% load static %}
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+      <a href="{% url 'core:index' %}" class="app-brand-link">
+        <span class="app-brand-logo demo">
+          <img src="{% static 'logo_21.png' %}" style="width: 200px;" />
+        </span>
+      </a>
+
+      <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+        <i class="bx bx-chevron-left bx-sm align-middle"></i>
+      </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+      <!-- Dashboard -->
+      {% url 'core:dashboard' as dashboard_url %}
+      <li class="menu-item {% if request.path == dashboard_url %}active{% endif %}">
+        <a href="{% url 'core:dashboard' %}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Dashboard</div>
+        </a>
+      </li>
+
+      {% url 'core:statistics' as statistics_url %}
+      <li class="menu-item {% if request.path == statistics_url %}active{% endif %}">
+        <a href="{% url 'core:statistics' %}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-bar-chart"></i>
+          <div data-i18n="Analytics">Statistics</div>
+        </a>
+      </li>
+
+      {% url 'core:direct_link' as direct_link_url %}
+      <li class="menu-item {% if request.path == direct_link_url %}active{% endif %}">
+        <a href="{% url 'core:direct_link' %}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-link"></i>
+          <div data-i18n="Analytics">Smart Link</div>
+        </a>
+      </li>
+
+      {% url 'account:request_withdrawal' as withdrawal %}
+      <li class="menu-item {% if request.path == withdrawal %}active{% endif %}">
+        <a href="{% url 'account:request_withdrawal' %}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-money"></i>
+          <div data-i18n="Analytics">Withdrawal</div>
+        </a>
+      </li>
+
+      {% url 'account:profile' as profile_url %}
+      <li class="menu-item {% if request.path == profile_url %}active{% endif %}">
+        <a href="{% url 'account:profile' %}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-user"></i>
+          <div data-i18n="Analytics">Profile</div>
+        </a>
+      </li>
+
+      <!-- <li class="menu-item">
+        <a href="{% url 'core:contact' %}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-phone"></i>
+          <div data-i18n="Analytics">Contact Us</div>
+        </a>
+      </li> -->
+
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-phone"></i>
+          <div data-i18n="Account Settings">Contact Us</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="skype:{{setting.skype}}?chat" class="menu-link">
+              <div data-i18n="Account">Skype ID</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="mailto:{{setting.email}}" class="menu-link">
+              <div data-i18n="Notifications">Email ID</div>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+
+    </ul>
+  </aside>
