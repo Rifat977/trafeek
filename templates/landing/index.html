@@ -1,249 +1,332 @@
-{% extends 'landing/base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
 
-{% block title %}Advanced Advertising Network{% endblock %}
+<head>
+  <meta charset="utf-8">
+  <title>Dtox</title>
 
-{% block content %}
-<div class="banner" >
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/bootstrap/bootstrap.min.css' %}">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/themify-icons/themify-icons.css' %}">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/slick/slick.css' %}">
+  <!-- venobox popup -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/Venobox/venobox.css' %}">
+  <!-- aos -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/aos/aos.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link href="{% static 'assets3/css/style.css' %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static 'assets3/images/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+</head>
+
+<body>
+  
+
+<!-- navigation -->
+<section class="fixed-top navigation">
   <div class="container">
-    <h1 class="font-weight-semibold">Advanced Advertising Network</h1>
-    <h6 class="font-weight-normal text-muted pb-3">with a Unique Partner Care Approach</h6>
-    <div>
-      <a class="btn btn-opacity-light mr-1" href="{% url 'account:login' %}">Get started</a>
-      <a class="btn btn-opacity-success ml-1" href="{% url 'account:register' %}">Learn more</a>
-    </div>
-    <img src="{% static 'assets2/images/Group171.svg' %}" alt="" class="img-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="index.html"><img src="{% static 'assets3/images/logo.png' %}" alt="logo"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- navbar -->
+      <div class="collapse navbar-collapse text-center" id="navbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="{% url 'core:contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:privacy' %}">Privacy Policy</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="{% url 'core:dashboard' %}">Dashboard</a>
+          </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="{% url 'account:register' %}">Register</a>
+            </li>
+          {% endif %}
+        </ul>
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'account:login' %}" class="btn btn-primary ml-lg-3 primary-shadow">Login</a>
+        {% endif %}
+      </div>
+    </nav>
   </div>
-</div>
-<div class="content-wrapper">
+</section>
+<!-- /navigation -->
+
+<!-- hero area -->
+<section class="hero-section hero" data-background="" style="background-image: url({% static 'assets3/images/hero-area/banner-bg.png' %});">
   <div class="container">
-    <section class="features-overview" id="features-section" >
-      <div class="content-header">
-        <h2>Why choose the leading online ad network</h2>
+    <div class="row">
+      <div class="col-lg-12 text-center zindex-1">
+        <h1 class="mb-3">Take Control of your<br>
+          Project and Team</h1>
+        <p class="mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum<br>
+          dolore eu fugiat nulla pariatur.</p>
+        <a href="#" class="btn btn-secondary btn-lg">explore us</a>
+        <!-- banner image -->
+        <img class="img-fluid w-100 banner-image" src="{% static 'assets3/images/hero-area/banner-img.png' %}" alt="banner-img">
       </div>
-      <div class="d-md-flex justify-content-between">
-        <div class="grid-margin d-flex justify-content-start">
-          <div class="features-width">
-            <img src="{% static 'assets2/images/Group12.svg' %}" alt="" class="img-icons">
-            <h5 class="py-3">Unique Partner Care</h5>
-            <p class="text-muted">Our Partner Care Standards go beyond just answering questions. In addition to high-competent support, we offer guidance on optimizing campaigns and monetizing traffic. Expert managers assist in improving ad strategy for your benefit.</p>
+    </div>
+  </div>
+  <!-- background shapes -->
+  <div id="scene">
+    <img class="img-fluid hero-bg-1 up-down-animation" src="{% static 'assets3/images/background-shape/feature-bg-2.png' %}" alt="">
+    <img class="img-fluid hero-bg-2 left-right-animation" src="{% static 'assets3/images/background-shape/seo-ball-1.png' %}" alt="">
+    <img class="img-fluid hero-bg-3 left-right-animation" src="{% static 'assets3/images/background-shape/seo-half-cycle.png' %}" alt="">
+    <img class="img-fluid hero-bg-4 up-down-animation" src="{% static 'assets3/images/background-shape/green-dot.png' %}" alt="">
+    <img class="img-fluid hero-bg-5 left-right-animation" src="{% static 'assets3/images/background-shape/blue-half-cycle.png' %}" alt="">
+    <img class="img-fluid hero-bg-6 up-down-animation" src="{% static 'assets3/images/background-shape/seo-ball-1.png' %}" alt="">
+    <img class="img-fluid hero-bg-7 left-right-animation" src="{% static 'assets3/images/background-shape/yellow-triangle.png' %}" alt="">
+    <img class="img-fluid hero-bg-8 up-down-animation" src="{% static 'assets3/images/background-shape/service-half-cycle.png' %}" alt="">
+    <img class="img-fluid hero-bg-9 up-down-animation" src="{% static 'assets3/images/background-shape/team-bg-triangle.png' %}" alt="">
+  </div>
+</section>
+<!-- /hero-area -->
+
+<!-- feature -->
+<section class="section feature mb-0" id="feature">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-title">Awesome Features</h2>
+        <p class="mb-100">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>Excepteur sint occaecat cupidatat non proident</p>
+      </div>
+      <!-- feature item -->
+      <div class="col-md-6 mb-80">
+        <div class="d-flex feature-item">
+          <div>
+            <i class="ti-ruler-pencil feature-icon mr-4"></i>
           </div>
-        </div>
-        <div class="grid-margin d-flex justify-content-center">
-          <div class="features-width">
-            <img src="{% static 'assets2/images/Group7.svg' %}" alt="" class="img-icons">
-            <h5 class="py-3">Ad Safety and Traffic Quality</h5>
-            <p class="text-muted">Adsterra’s in-house 3-level security system prevents malware, ad fraud, and bot traffic, ensuring high-quality views and clicks. The platform’s intelligent algorithms serve offers to the most relevant audiences based on over 20 parameters.</p>
-          </div>
-        </div>
-        <div class="grid-margin d-flex justify-content-end">
-          <div class="features-width">
-            <img src="{% static 'assets2/images/Group5.svg' %}" alt="" class="img-icons">
-            <h5 class="py-3">Performance-Boosting Tools</h5>
-            <p class="text-muted">Advertisers automate bidding strategies with Traffic Estimator and Smart CPM or set rules to optimize traffic by conversions (CPA Goal). Custom Bid allows for the finest bid adjustments, sending higher payouts to the best-performing placements.</p>
-          </div>
-        </div>
-      </div>
-    </section>     
-    <section class="digital-marketing-service" id="digital-marketing-section">
-      <div class="content-header text-center mb-5">
-        <h2>Who can benefit from Adsterra ad network</h2>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
-          <h3 class="m-0">Advertisers</h3>
-          <div class="col-lg-7 col-xl-6 p-0">
-            <p class="py-4 m-0 text-muted">Adsterra is a powerful online advertising network for brands, agencies, and media buyers. With over 20 targeting settings, you deliver ads to the best-matching audiences. Unlock high-quality CPM, CPC, and CPA traffic from 35K+ direct publishers.            </p>
-          </div>    
-        </div>
-        <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
-          <img src="{% static 'assets2/images/Group1.png' %}" alt="" class="img-fluid">
-        </div>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-7 text-center flex-item grid-margin" data-aos="fade-right">
-          <img src="{% static 'assets2/images/Group2.png' %}" alt="" class="img-fluid">
-        </div>
-        <div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-left">
-          <h3 class="m-0">Publishers</h3>
-          <div class="col-lg-9 col-xl-8 p-0">
-            <p class="py-4 m-0 text-muted">With the highest-paying ad network, publishers can monetize sites, blogs or social media traffic. We provide solutions for earning without a website. AI algorithms are finetuned to send the most relevant CPM rates and ad feed.</p>
+          <div>
+            <h4>Awesome Design</h4>
+            <p>Consectetur adipiscing elit donec tempus
+              pellentesque dui.</p>
           </div>
         </div>
       </div>
-    </section>     
-    <section class="customer-feedback" id="feedback-section">
-      <div class="row">
-        <div class="col-12 text-center pb-5">
-          <h2>What our customers have to say</h2>
-          <h6 class="section-subtitle text-muted m-0">Lorem ipsum dolor sit amet, tincidunt vestibulum.</h6>
-        </div>
-        <div class="owl-carousel owl-theme grid-margin">
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face2.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Tony Martinez</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face3.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Sophia Armstrong</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face20.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Cody Lambert</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face15.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Cody Lambert</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face16.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Cody Lambert</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face1.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Tony Martinez</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face2.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Tony Martinez</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face3.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Sophia Armstrong</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
-            <div class="card customer-cards">
-              <div class="card-body">
-                <div class="text-center">
-                  <img src="{% static 'assets2/images/face20.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                  <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
-                  <div class="content-divider m-auto"></div>
-                  <h6 class="card-title pt-3">Cody Lambert</h6>
-                  <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
-                </div>
-              </div>
-            </div>
+      <!-- feature item -->
+      <div class="col-md-6 mb-80">
+        <div class="d-flex feature-item">
+          <div>
+            <i class="ti-layout-cta-left feature-icon mr-4"></i>
+          </div>
+          <div>
+            <h4>Easy Customize</h4>
+            <p>Consectetur adipiscing elit donec tempus
+              pellentesque dui.</p>
+          </div>
         </div>
       </div>
-    </section>
-    <section class="contact-details" id="contact-details-section">
-      <div class="row text-center text-md-left">
-        <div class="col-12 col-md-4 mt-3">
-          <h5 class="pb-2">Quick Navigation</h5>
-          <a href="{% url 'core:index' %}"><p class="m-0 pb-2">Home</p></a>   
-          <a href="{% url 'core:contact' %}"><p class="m-0 pb-2">Contact</p></a>   
-          <a href="{% url 'account:login' %}" ><p class="m-0 pt-1 pb-2">Login</p></a> 
-          <a href="{% url 'account:register' %}" ><p class="m-0 pt-1 pb-2">Register</p></a> 
+      <!-- feature item -->
+      <div class="col-md-6 mb-80">
+        <div class="d-flex feature-item">
+          <div>
+            <i class="ti-split-v-alt feature-icon mr-4"></i>
+          </div>
+          <div>
+            <h4>Bug free Code</h4>
+            <p>Consectetur adipiscing elit donec tempus
+              pellentesque dui.</p>
+          </div>
         </div>
-        <div class="col-12 col-md-4">
-          <img src="{% static 'logo_21.png' %}" alt="" class="">
-          <div class="">
-            <p class="text-muted m-0">Trafeek has been connecting brands and marketing professionals through top-tier advertising and monetization solutions since 2013. Along with performance-boosting functionality.</p>
-          </div>         
-        </div>
-        <div class="col-12 col-md-4 mt-3">
-            <h5 class="pb-2">Our address</h5>
-            <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
-            <div class="d-flex justify-content-center justify-content-md-start">
-              <a href="mailto:{{setting.contact_page_email}}"><span class="mdi mdi-email"></span></a>
-              <a href="skype:{{setting.contact_page_skype}}?chat"><span class="mdi mdi-skype"></span></a>
-            </div>
-        </div>
-      </div> 
-    </section>
-    <section>
-      <div>
-        <hr class="hr" />
-        <div class="row text-center justify-content-center">
-          <p class="text-muted">Copyright &copy; 2025 Trafeek</p>
-        </div>   
       </div>
-    </section>
-    <!-- Modal for Contact - us Button -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel">Contact Us</h4>
+      <!-- feature item -->
+      <div class="col-md-6 mb-80">
+        <div class="d-flex feature-item">
+          <div>
+            <i class="ti-layers-alt feature-icon mr-4"></i>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="Name">Name</label>
-                <input type="text" class="form-control" id="Name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" id="Email-1" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="Message">Message</label>
-                <textarea class="form-control" id="Message" placeholder="Enter your Message"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success">Submit</button>
+          <div>
+            <h4>Organized Layouts</h4>
+            <p>Consectetur adipiscing elit donec tempus
+              pellentesque dui.</p>
           </div>
         </div>
       </div>
     </div>
-  </div> 
-</div>
-{% endblock %}
+  </div>
+  <img class="feature-bg-1 up-down-animation" src="{% static 'assets3/images/background-shape/feature-bg-1.png' %}" alt="bg-shape">
+  <img class="feature-bg-2 left-right-animation" src="{% static 'assets3/images/background-shape/feature-bg-2.png' %}" alt="bg-shape">
+</section>
+<!-- /feature -->
+
+<!-- marketing -->
+<section class="section-lg seo">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="seo-image">
+          <img class="img-fluid" src="{% static 'assets3/images/marketing/marketing.png' %}" alt="form-img">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h2 class="section-title">A Complete Range Of SEO Marketing Services!</h2>
+        <p>Far far away, behind the word mountains, far
+          from the countries Vokalia and Consonantia.<br>
+          There live the blind texts. Separated they
+          live in Bookmarksgrove right at the coast of
+          the Semantics, a large language ocean.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- background image -->
+  <img class="img-fluid seo-bg" src="{% static 'assets3/images/backgrounds/seo-bg.png' %}" alt="seo-bg">
+  <!-- background-shape -->
+  <img class="seo-bg-shape-1 left-right-animation" src="{% static 'assets3/images/background-shape/seo-ball-1.png' %}" alt="bg-shape">
+  <img class="seo-bg-shape-2 up-down-animation" src="{% static 'assets3/images/background-shape/seo-half-cycle.png' %}" alt="bg-shape">
+  <img class="seo-bg-shape-3 left-right-animation" src="{% static 'assets3/images/background-shape/seo-ball-2.png' %}" alt="bg-shape">
+</section>
+<!-- /marketing -->
+
+<!-- service -->
+<section class="section-lg service">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-5 order-2 order-md-1">
+        <h2 class="section-title">Powerful Layout From Top To Bottom</h2>
+        <p class="mb-4">Far far away, behind the word mountains,
+          far from the countries Vokalia and Consonantia,
+          there live the blind texts. Separated they
+          live in Bookmarksgrove right at the coast of the
+          Semantics, a large language ocean.</p>
+        <ul class="pl-0 service-list">
+          <li><i class="ti-layout-tab-window text-purple"></i>Responsive on any device</li>
+          <li><i class="ti-layout-placeholder text-purple"></i>Very easy to customize</li>
+          <li><i class="ti-support text-purple"></i>Effective support</li>
+        </ul>
+      </div>
+      <div class="col-md-7 order-1 order-md-2">
+        <img class="img-fluid layer-3" src="{% static 'assets3/images/service/service.png' %}" alt="service">
+      </div>
+    </div>
+  </div>
+  <!-- background image -->
+  <img class="img-fluid service-bg" src="{% static 'assets3/images/backgrounds/service-bg.png' %}" alt="service-bg">
+  <!-- background shapes -->
+  <img class="service-bg-shape-1 up-down-animation" src="{% static 'assets3/images/background-shape/service-half-cycle.png' %}" alt="background-shape">
+  <img class="service-bg-shape-2 left-right-animation" src="{% static 'assets3/images/background-shape/feature-bg-2.png' %}" alt="background-shape">
+</section>
+<!-- /service -->
+
+<!-- client logo slider -->
+<section class="section">
+  <div class="container">
+      <div class="client-logo-slider align-self-center">
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-1.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-2.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-3.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-4.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-5.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-1.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-2.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-3.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-4.png' %}" alt="client-logo"></a>
+          <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="{% static 'assets3/images/clients-logo/client-logo-5.png' %}" alt="client-logo"></a>
+      </div>
+  </div>
+</section>
+<!-- /client logo slider -->
+
+<!-- newsletter -->
+<section class="newsletter">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Subscribe to our newsletter</h2>
+        <p class="mb-5">Receive updates, news and deals</p>
+      </div>
+      <div class="col-lg-8 col-sm-10 col-12 mx-auto">
+        <form action="#">
+          <div class="input-wrapper position-relative">
+            <input type="email" class="newsletter-form" id="newsletter" placeholder="Enter your email">
+            <button type="submit" value="send" class="btn newsletter-btn">subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- background shapes -->
+  <img class="newsletter-bg-shape left-right-animation" src="{% static 'assets3/images/background-shape/seo-ball-2.png' %}" alt="background-shape">
+</section>
+<!-- /newsletter -->
+
+<!-- footer -->
+<footer class="footer-section footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 text-center text-lg-left mb-4 mb-lg-0">
+        <!-- logo -->
+        <a href="index.html">
+          <img class="img-fluid" src="{% static 'assets3/images/logo.png' %}" alt="logo">
+        </a>
+      </div>
+      <!-- footer menu -->
+      <nav class="col-lg-8 align-self-center mb-5">
+        <ul class="list-inline text-lg-right text-center footer-menu">
+          <li class="list-inline-item active"><a href="index.html">Home</a></li>
+          <li class="list-inline-item"><a class="page-scroll" href="#feature">Login</a></li>
+          <li class="list-inline-item"><a href="about.html">Register</a></li>
+          <li class="list-inline-item"><a class="page-scroll" href="#team">Dashboard</a></li>
+          <li class="list-inline-item"><a class="page-scroll" href="#pricing">Privacy Policy</a></li>
+          <li class="list-inline-item"><a class="page-scroll" href="#pricing">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- footer social icon -->
+      <nav class="col-12">
+        <ul class="list-inline text-lg-right text-center social-icon">
+          <li class="list-inline-item">
+            <a class="facebook" href="#"><i class="ti-facebook"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a class="twitter" href="#"><i class="ti-twitter-alt"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a class="linkedin" href="#"><i class="ti-linkedin"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a class="black" href="#"><i class="ti-github"></i></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- jQuery -->
+<script src="{% static 'assets3/plugins/jQuery/jquery.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'assets3/plugins/bootstrap/bootstrap.min.js' %}"></script>
+<!-- slick slider -->
+<script src="{% static 'assets3/plugins/slick/slick.min.js' %}"></script>
+<!-- venobox -->
+<script src="{% static 'assets3/plugins/Venobox/venobox.min.js' %}"></script>
+<!-- aos -->
+<script src="{% static 'assets3/plugins/aos/aos.js' %}"></script>
+<!-- Main Script -->
+<script src="{% static 'assets3/js/script.js' %}"></script>
+
+</body>
+</html>
