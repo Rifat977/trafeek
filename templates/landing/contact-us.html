@@ -1,84 +1,126 @@
-{% extends 'landing/base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
 
-{% block title %}Contact us{% endblock %}
+<head>
+  <meta charset="utf-8">
+  <title>Dtox</title>
 
-{% block content %}
-  <div class="content-wrapper">
-    <div class="container">
-      <section class="features-overview" id="features-section" >
-        <div class="content-header">
-          <h2>Contact With Us</h2>
-          <h6 class="section-subtitle text-muted">One theme that serves as an easy-to-use operational toolkit<br>that meets customer's needs.</h6>
-        </div>
-        <!-- <div class="d-md-flex justify-content-between">
-          <div class="grid-margin d-flex justify-content-start">
-            <div class="features-width">
-              <h5 class="py-3">Skype</h5>
-              <p class="text-muted">{{setting.skype}}</p>
-            </div>
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/bootstrap/bootstrap.min.css' %}">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/themify-icons/themify-icons.css' %}">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/slick/slick.css' %}">
+  <!-- venobox popup -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/Venobox/venobox.css' %}">
+  <!-- aos -->
+  <link rel="stylesheet" href="{% static 'assets3/plugins/aos/aos.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link href="{% static 'assets3/css/style.css' %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static 'assets3/images/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+</head>
+
+<body>
+  
+
+<!-- navigation -->
+<section class="fixed-top navigation">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="index.html"><img src="{% static 'assets3/images/logo.png' %}" alt="logo"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- navbar -->
+      <div class="collapse navbar-collapse text-center" id="navbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="{% url 'core:contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:privacy' %}">Privacy Policy</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="{% url 'core:dashboard' %}">Dashboard</a>
+          </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="{% url 'account:register' %}">Register</a>
+            </li>
+          {% endif %}
+        </ul>
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'account:login' %}" class="btn btn-primary ml-lg-3 primary-shadow">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</section>
+<!-- /navigation -->
+
+<!-- contact -->
+<section class="section-lg contact">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-title">Contact</h2>
           </div>
-          <div class="grid-margin d-flex justify-content-center">
-            <div class="features-width">
-              <h5 class="py-3">Email</h5>
-              <p class="text-muted">{{setting.email}}</p>
-            </div>
-          </div>
-        </div> -->
-      </section> 
-      <section class="contact-us" id="contact-section">
-        <div class="contact-us-bgimage grid-margin" >
-          <div class="pb-2">
-            <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">Email</h4>
-            <h4 class="pt-1" data-aos="fade-down">{{setting.contact_page_email}}</h4>
-          </div>
-          <div data-aos="fade-up">
-            <a href="mailto:{{setting.contact_page_email}}" class="btn btn-rounded btn-outline-danger">Send Mail</a>
-          </div>          
-        </div>
-        <div class="contact-us-bgimage grid-margin" style="background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk2MC1uaW5nLTMwLmpwZw.jpg')" >
-            <div class="pb-2">
-              <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">Skype</h4>
-              <h4 class="pt-1" data-aos="fade-down">{{setting.contact_page_skype}}</h4>
-            </div>
-            <div data-aos="fade-up">
-              <a href="skype:{{setting.contact_page_skype}}?chat" class="btn btn-rounded btn-outline-danger">Send Message</a>
-            </div>          
-          </div>
-      </section>
-      <section class="contact-details" id="contact-details-section">
-        <div class="row text-center text-md-left">
-          <div class="col-12 col-md-4 mt-3">
-            <h5 class="pb-2">Quick Navigation</h5>
-            <a href="{% url 'core:index' %}"><p class="m-0 pb-2">Home</p></a>   
-            <a href="{% url 'core:contact' %}"><p class="m-0 pb-2">Contact</p></a>   
-            <a href="{% url 'account:login' %}" ><p class="m-0 pt-1 pb-2">Login</p></a> 
-            <a href="{% url 'account:register' %}" ><p class="m-0 pt-1 pb-2">Register</p></a> 
-          </div>
-          <div class="col-12 col-md-4">
-            <img src="{% static 'logo_21.png' %}" alt="" class="">
-            <div class="">
-              <p class="text-muted m-0">Trafeek has been connecting brands and marketing professionals through top-tier advertising and monetization solutions since 2013. Along with performance-boosting functionality.</p>
-            </div>         
-          </div>
-          <div class="col-12 col-md-4 mt-3">
-              <h5 class="pb-2">Our address</h5>
-              <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
-              <div class="d-flex justify-content-center justify-content-md-start">
-                <a href="mailto:{{setting.contact_page_email}}"><span class="mdi mdi-email"></span></a>
-                <a href="skype:{{setting.contact_page_skype}}?chat"><span class="mdi mdi-skype"></span></a>
+      </div>
+      <div class="row justify-content-center">
+          <div class="col-lg-6 col-sm-6 mb-4 mb-lg-0">
+              <div class="card p-4 border-blue"> 
+                  <h5><i class="ti-email round-icon green mr-2"></i> Email</h5>
+                  <p class="mb-0">{{setting.contact_page_email}}</p>
+                  <a href="mailto:{{setting.email}}" class="btn btn-sm btn-success mt-3 text-light">Send Email</a>
               </div>
           </div>
-        </div> 
-      </section>
-      <section>
-        <div>
-          <hr class="hr" />
-          <div class="row text-center justify-content-center">
-            <p class="text-muted">Copyright &copy; 2025 Trafeek</p>
-          </div>   
-        </div>
-      </section>
-    </div> 
+          <div class="col-lg-6 col-sm-6 mb-4 mb-lg-0">
+              <div class="card p-4 border-blue">
+                  <h5><i class="ti-skype round-icon blue mr-2"></i> Skype</h5>
+                  <p class="mb-0">{{setting.contact_page_skype}}</p>
+                  <a href="skype:{{setting.skype}}?chat" class="btn btn-sm btn-info mt-3 text-light">Send Message</a>
+              </div>
+          </div>
+      </div>
   </div>
-{% endblock %}
+  <!-- background shapes -->
+  <img class="contact-bg-1 up-down-animation" src="{% static 'assets3/images/background-shape/feature-bg-2.png' %}" alt="background-shape">
+  <img class="contact-bg-2 left-right-animation" src="{% static 'assets3/images/background-shape/green-half-cycle.png' %}" alt="background-shape">
+  <img class="contact-bg-3 up-down-animation" src="{% static 'assets3/images/background-shape/green-dot.png' %}" alt="background-shape">
+  <img class="contact-bg-4 left-right-animation" src="{% static 'assets3/images/background-shape/service-half-cycle.png' %}" alt="background-shape">
+  <img class="contact-bg-5 up-down-animation" src="{% static 'assets3/images/background-shape/feature-bg-2.png' %}" alt="background-shape">
+</section>
+<!-- /contact -->
+
+
+<!-- jQuery -->
+<script src="{% static 'assets3/plugins/jQuery/jquery.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'assets3/plugins/bootstrap/bootstrap.min.js' %}"></script>
+<!-- slick slider -->
+<script src="{% static 'assets3/plugins/slick/slick.min.js' %}"></script>
+<!-- venobox -->
+<script src="{% static 'assets3/plugins/Venobox/venobox.min.js' %}"></script>
+<!-- aos -->
+<script src="{% static 'assets3/plugins/aos/aos.js' %}"></script>
+<!-- Main Script -->
+<script src="{% static 'assets3/js/script.js' %}"></script>
+
+</body>
+</html>
